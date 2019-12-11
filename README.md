@@ -1,6 +1,6 @@
 # DocSpera Front-End Developer Interview Project
 
-1. Fork this repo to your GitHub account, then clone it to your local machine.
+1. Fork this repo to your GitHub account, then clone your copy to your local machine.
 
 2. Open the repo in your code editor of choice.
 
