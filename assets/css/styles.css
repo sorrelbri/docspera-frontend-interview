@@ -1,0 +1,16 @@
+Body{
+	Align-Items:		Center;
+	Display:			Flex;
+	Height:				100vh;
+	Justify-Content:	Center;
+	Margin:				0;
+}
+
+Loading{
+	Color:				#333333;
+	Transform:			scale(1.5);
+}
+Loading > I{
+	Color:				#0096FA;
+	Margin-Right:		5px;
+}
