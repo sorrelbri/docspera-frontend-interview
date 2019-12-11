@@ -4,7 +4,7 @@
 
 2. Open the repo in your code editor of choice.
 
-3. In `script.js`, make an asynchronous (e.g. AJAX) GET request to the endpoint `/example.json`.
+3. In `assets/js/script.js`, make an asynchronous (e.g. AJAX) GET request to the endpoint `/example.json`.
 
 4. In `index.html`, using vanilla JavaScript or jQuery (v3.4.1 included), replace the loading element with a case card for each of the 3 cases in the JSON response object.
 
@@ -20,7 +20,7 @@
 	- Physician name
 	- Case notes
 
-6. You may style the page however you wish, with two required conditions:
+6. In `assets/css/styles.css`, you may style the page however you wish, with two required conditions:
 	- Background color for Surgery case cards must use the hex color value `AFDCFA`.
 	- Background color for Clinical case cards must use the RGB color value `255,211,169`.
 
