@@ -4,21 +4,23 @@
 
 2. Open the repo in your code editor of choice.
 
-3. In `assets/js/script.js`, make an asynchronous (e.g. AJAX) GET request to the endpoint `/example.json`.
+3. In `assets/js/script.js`, make an asynchronous (e.g. AJAX) GET request to the following endpoint:
 
-4. In `index.html`, using vanilla JavaScript or jQuery (v3.4.1 included), replace the loading element with a case card for each of the 3 cases in the JSON response object.
+> `https://dalazaro.github.io/ds-json-example/example.json`
 
-5. Each of your 3 case cards must include the following details:
+4. In `index.html`, using vanilla JavaScript or jQuery (v3.4.1 included), replace the loading element with a card element for each of the 3 cases in the JSON response object.
+
+5. Each of your 3 case cards must include the following details, labelled:
 	- Case ID number
-	- Patient first and last name
-	- Date of birth (DOB) - You may preserve its given format (`YYYYMMDD`). Bonus points if you convert to `MM/DD/YYYY` using JavaScript Date methods or MomentJS (v2.24.0 included).
-	- Gender - Given format is `M` or `F`. Please convert to `Male` or `Female`
-	- Medical record number (MRN)
-	- Case title
-	- Case type
-	- Start and end times - You may preserve its given format (`YYYYMMDDHHmmss`). Bonus points if you convert to `MM/DD/YYYY HH:mm`
 	- Physician name
+	- Case type
+	- Case title
+	- Start and end times - You may preserve its given format (`YYYYMMDDHHmmss`). Bonus points if you convert to a user-friendly format using JavaScript Date methods or MomentJS (v2.24.0 included).
 	- Case notes
+	- Patient first and last name
+	- Medical record number (MRN)
+	- Gender - Given format is `M` or `F`. Please convert to `Male` or `Female`
+	- Date of birth (DOB) - You may preserve its given format (`YYYYMMDD`). Bonus points if you convert to a user-friendly format.
 
 6. In `assets/css/styles.css`, you may style the page however you wish, with two required conditions:
 	- Background color for Surgery case cards must use the hex color value `AFDCFA`.
@@ -27,3 +29,7 @@
 7. Commit and push your changes to your remote repo.
 
 8. Submit a pull request to this upstream repo for review.
+
+Happy coding!
+
+![Example Screenshot](/assets/img/screenshot.png)
