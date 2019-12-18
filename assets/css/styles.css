@@ -1,7 +1,7 @@
 Body{
 	Align-Items:		Center;
 	Display:			Flex;
-	Height:				100vh;
+	Min-Height:			100vh;
 	Justify-Content:	Center;
 	Margin:				0;
 }
