@@ -8,7 +8,7 @@
 
 > `https://dalazaro.github.io/ds-json-example/example.json`
 
-4. In `index.html`, using vanilla JavaScript or jQuery (v3.4.1 included), replace the loading element with a card element for each of the 3 cases in the JSON response object.
+4. In `index.html`, using vanilla JavaScript or jQuery (v3.4.1 included), replace the loading element (without deleting or commenting it out) with a card element for each of the 3 cases in the JSON response object.
 
 5. Each of your 3 case cards must include the following details, labelled:
 	- Case ID number
