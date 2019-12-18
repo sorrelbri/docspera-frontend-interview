@@ -28,8 +28,6 @@
 
 7. Commit and push your changes to your remote repo.
 
-8. Submit a pull request to this upstream repo for review.
-
 Happy coding!
 
 ![Example Screenshot](/assets/img/screenshot.png)
