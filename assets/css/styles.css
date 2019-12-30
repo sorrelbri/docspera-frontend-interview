@@ -19,3 +19,11 @@ div.case-container {
   display: flex;
   flex-direction: column;
 }
+
+div.case.surgery {
+  background-color: #AFDCFA;
+}
+
+div.case.clinical {
+  background-color: rgb(255,211,169);
+}
