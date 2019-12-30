@@ -13,13 +13,33 @@ const formatDate = dateString => {
 
 // (caseData: object): string
 const templateCaseElement = caseData => `
-  <div class="case ${caseData.details.case_type}">
-    <p>${caseData.details.case_type}</p>
-    <p>${caseData.details.case_title}</p>
-    <p>Date of Birth</p>
-    <p>${formatDate(caseData.patient.dob)}</p>
-    <p>Case Notes</p>
-    <p>${caseData.details.notes}</p>
+  <div class="case case__${caseData.details.case_type}">
+    <table>
+      <tr>
+        <td class="table-label">
+          <p>${caseData.details.case_type}</p>
+        </td>
+        <td class="table-data">
+          <p>${caseData.details.case_title}</p>
+        </td>
+      </tr>
+      <tr>
+        <td class="table-label">
+          <p>Date of Birth</p>
+        </td>
+        <td class="table-data">
+          <p>${formatDate(caseData.patient.dob)}</p>
+        </td>
+      </tr>
+      <tr>
+        <td class="table-label">
+          <p>Case Notes</p>
+        </td>
+        <td class="table-data">
+          <p>${caseData.details.notes}</p>
+        </td>
+      </tr>
+    </table>
   </div>
 `.trim();
 
