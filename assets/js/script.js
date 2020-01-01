@@ -3,6 +3,10 @@
 const $loading = $('loading:first-child')[0];
 const $body = $('body')[0];
 
+// ! STATE
+
+let casesState = {};
+
 // ! FUNCTIONS
 
 // (dateString: number): string
@@ -12,7 +16,26 @@ const formatDate = dateString => {
   return `${YYYYMMDD.slice(4,6)}/${YYYYMMDD.slice(6)}/${YYYYMMDD.slice(0, 4)}`;
 }
 
-// (caseData: object): string
+// (e: eventObject, caseData: casesState[n]): 
+const handleCaseDetailsClick = (e, caseData) => {
+  e.preventDefault();
+
+  // toggle show detail
+  caseData.showDetail = !caseData.showDetail;
+}
+
+// (caseData: casesState[n]): string
+const templateCaseElementDetail = caseData => caseData.showDetail
+  // if showDetail === true
+  ? `
+  <td>Show Detail</td>
+  `
+  // if showDetail === false
+  : `
+  <td>No Show Detail</td>
+  `
+
+// (caseData: casesState[n]): string
 const templateCaseElement = caseData => `
   <div class="case case__${caseData.details.case_type}">
     <table>
@@ -39,6 +62,9 @@ const templateCaseElement = caseData => `
         <td class="table-data">
           <p>${caseData.details.notes}</p>
         </td>
+      </tr>
+      <tr>
+        ${templateCaseElementDetail(caseData)}
       </tr>
     </table>
   </div>
@@ -72,7 +98,8 @@ const getExampleCases = () => $.ajax({
 })
 .done(exampleCases => {
   $loading.remove();
-  const $caseContainer = buildCaseContainer(exampleCases.cases);
+  casesState = exampleCases.cases.map(caseData => ({ ...caseData, showDetail: false }))
+  const $caseContainer = buildCaseContainer(casesState);
   $body.append($caseContainer);
 })
 .fail((_, error) => {
