@@ -16,13 +16,33 @@ const formatDate = dateString => {
   return `${YYYYMMDD.slice(4,6)}/${YYYYMMDD.slice(6)}/${YYYYMMDD.slice(0, 4)}`;
 }
 
-// (e: eventObject, caseData: casesState[n]): 
+// (caseData: casesState[n]): undefined
+const rerender = caseData => {
+  const caseElement = templateCaseElement(caseData);
+  $(`div#case-${caseData.case_id}`).replaceWith($(caseElement));
+  const $div = $(`div#case-${caseData.case_id}`);
+  const $button = $(templateCaseElementButton(caseData)).appendTo($div);
+  $button.click(e => handleCaseDetailsClick(e, caseData));
+}
+
+// (e: eventObject, caseData: casesState[n]): function
 const handleCaseDetailsClick = (e, caseData) => {
   e.preventDefault();
 
   // toggle show detail
   caseData.showDetail = !caseData.showDetail;
+  return rerender(caseData);
 }
+
+const templateCaseElementButton = caseData => caseData.showDetail
+// if showDetail === true
+? `
+<button id="toggle-${caseData.case_id}">Hide Detail</button>
+`
+// if showDetail === false
+: `
+<button id="toggle-${caseData.case_id}">Show Detail</button>
+`
 
 // (caseData: casesState[n]): string
 const templateCaseElementDetail = caseData => caseData.showDetail
@@ -37,7 +57,7 @@ const templateCaseElementDetail = caseData => caseData.showDetail
 
 // (caseData: casesState[n]): string
 const templateCaseElement = caseData => `
-  <div class="case case__${caseData.details.case_type}">
+  <div id="case-${caseData.case_id}" class="case case__${caseData.details.case_type}">
     <table>
       <tr>
         <td class="table-label">
@@ -74,10 +94,11 @@ const templateCaseElement = caseData => `
 const buildCaseContainer = exampleCases => {
   const $caseContainer = $('<div class="case-container"></div>')[0]
   
-  exampleCases.map(caseData => {
+  exampleCases.forEach(caseData => {
     const caseElement = templateCaseElement(caseData);
-    const $div = $(caseElement)[0];
-    $caseContainer.append($div);
+    const $div = $(caseElement).appendTo($caseContainer);
+    const $button = $(templateCaseElementButton(caseData)).appendTo($div);
+    $button.click(e => handleCaseDetailsClick(e, caseData));
   });
 
   return $caseContainer;
