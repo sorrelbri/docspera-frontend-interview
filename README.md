@@ -21,6 +21,12 @@
 
 7. Commit and push your changes to your remote repo, and email me to set up a code review.
 
+### Extra Credit
+
+- Create a new branch called `refactor` based off your master branch.
+- For each case card, add some sort of clickable icon that allows the card to expand downward when the user clicks it. The expanded card should show the rest of the details for that case (Case ID, Patient name, Gender, Medical record number, Human-readable start & end times (using momentJS if needed), and Physician name).
+- Clicking the icon again should also allow the card to collapse upward and hide the additional details.
+
 Happy coding!
 
 ![Example Screenshot](/assets/img/screenshot_1219.png)

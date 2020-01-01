@@ -8,6 +8,7 @@ const $body = $('body')[0];
 // (dateString: number): string
 const formatDate = dateString => {
   const YYYYMMDD = dateString.toString();
+  // return MM/DD/YYYY
   return `${YYYYMMDD.slice(4,6)}/${YYYYMMDD.slice(6)}/${YYYYMMDD.slice(0, 4)}`;
 }
 
@@ -46,11 +47,13 @@ const templateCaseElement = caseData => `
 // (exampleCases: array): $node
 const buildCaseContainer = exampleCases => {
   const $caseContainer = $('<div class="case-container"></div>')[0]
-  const caseElements = exampleCases.map(caseData => templateCaseElement(caseData));
-  caseElements.map(caseElement => {
+  
+  exampleCases.map(caseData => {
+    const caseElement = templateCaseElement(caseData);
     const $div = $(caseElement)[0];
     $caseContainer.append($div);
   });
+
   return $caseContainer;
 }
 
