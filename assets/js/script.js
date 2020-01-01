@@ -29,20 +29,30 @@ const handleCaseDetailsClick = (e, caseData) => {
   return rerender(caseData);
 }
 
-const templateCaseElementButton = caseData => caseData.showDetail
-// if showDetail === true
-? `
-<button id="toggle-${caseData.case_id}">Hide Detail</button>
-`
-// if showDetail === false
-: `
-<button id="toggle-${caseData.case_id}">Show Detail</button>
+// (caseData: casesState[n]): string
+const templateCaseElementButton = caseData => `
+  <div class="toggle-container" id="toggle-${caseData.case_id}">
+    <img
+      class="toggle-button"
+      ${caseData.showDetail 
+        // if showDetail === true
+        ? `
+        src="assets/fontawesome-free-5.11.2-web/svgs/solid/chevron-up.svg"
+        alt="click to hide case details"
+        ` 
+        // if showDetail === false
+        : `
+        src="assets/fontawesome-free-5.11.2-web/svgs/solid/chevron-down.svg"
+        alt="click to expand case details"
+        `
+      }
+    ></img>
+  </div>
 `
 
 // (caseData: casesState[n]): string
 const templateCaseElementDetail = caseData => caseData.showDetail
   // if showDetail === true
-  // Case ID, Patient name, Gender, Medical record number, Human-readable start & end times (using momentJS if needed), and Physician name
   ? `
     <tr class="table-detail">
     <td class="table-label">Case ID</td>
@@ -76,12 +86,9 @@ const templateCaseElementDetail = caseData => caseData.showDetail
       <td class="table-label">Physician</td>
       <td class="table-data">${caseData.details.physician}</td>
     </tr>
-  </table>
   `
   // if showDetail === false
-  : `
-  </table>
-  `
+  : ''
 
 // (caseData: casesState[n]): string
 const templateCaseElement = caseData => `
@@ -112,6 +119,7 @@ const templateCaseElement = caseData => `
         </td>
       </tr>
         ${templateCaseElementDetail(caseData)}
+    </table>
   </div>
 `.trim();
 
