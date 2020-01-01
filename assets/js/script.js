@@ -9,13 +9,6 @@ let casesState = {};
 
 // ! FUNCTIONS
 
-// (dateString: number): string
-const formatDate = dateString => {
-  const YYYYMMDD = dateString.toString();
-  // return MM/DD/YYYY
-  return `${YYYYMMDD.slice(4,6)}/${YYYYMMDD.slice(6)}/${YYYYMMDD.slice(0, 4)}`;
-}
-
 // (caseData: casesState[n]): undefined
 const rerender = caseData => {
   const caseElement = templateCaseElement(caseData);
@@ -65,7 +58,19 @@ const templateCaseElementDetail = caseData => caseData.showDetail
     </tr>
     <tr class="table-detail">
       <td class="table-label">Time</td>
-      <td class="table-data">${caseData.details.time.start} - ${caseData.details.time.end}</td>
+      <td class="table-data">${
+        moment(`${
+          caseData.details.time.start.toString().slice(0,8)
+          }T${
+          caseData.details.time.start.toString().slice(8,12)
+        }`).format('MM/DD/YY h:mm a')
+      } - ${
+        moment(`${
+          caseData.details.time.end.toString().slice(0,8)
+          }T${
+          caseData.details.time.end.toString().slice(8,12)
+        }`).format('MM/DD/YY h:mm a')
+      }</td>
     </tr>
     <tr class="table-detail">
       <td class="table-label">Physician</td>
@@ -95,7 +100,7 @@ const templateCaseElement = caseData => `
           <p>Date of Birth</p>
         </td>
         <td class="table-data">
-          <p>${formatDate(caseData.patient.dob)}</p>
+          <p>${moment(caseData.patient.dob).format('MM/DD/YYYY')}</p>
         </td>
       </tr>
       <tr>
