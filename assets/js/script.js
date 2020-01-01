@@ -19,8 +19,10 @@ const formatDate = dateString => {
 // (caseData: casesState[n]): undefined
 const rerender = caseData => {
   const caseElement = templateCaseElement(caseData);
+
   $(`div#case-${caseData.case_id}`).replaceWith($(caseElement));
   const $div = $(`div#case-${caseData.case_id}`);
+  
   const $button = $(templateCaseElementButton(caseData)).appendTo($div);
   $button.click(e => handleCaseDetailsClick(e, caseData));
 }
@@ -47,12 +49,33 @@ const templateCaseElementButton = caseData => caseData.showDetail
 // (caseData: casesState[n]): string
 const templateCaseElementDetail = caseData => caseData.showDetail
   // if showDetail === true
+  // Case ID, Patient name, Gender, Medical record number, Human-readable start & end times (using momentJS if needed), and Physician name
   ? `
-  <td>Show Detail</td>
+    <tr class="table-detail">
+    <td class="table-label">Case ID</td>
+    <td class="table-data">${caseData.case_id}</td>
+    </tr>
+    <tr class="table-detail">
+      <td class="table-label">Patient Name</td>
+      <td class="table-data">${caseData.patient.name.last}, ${caseData.patient.name.first}</td>
+    </tr>
+    <tr class="table-detail">
+      <td class="table-label">Medical Record</td>
+      <td class="table-data">${caseData.patient.mrn}</td>
+    </tr>
+    <tr class="table-detail">
+      <td class="table-label">Time</td>
+      <td class="table-data">${caseData.details.time.start} - ${caseData.details.time.end}</td>
+    </tr>
+    <tr class="table-detail">
+      <td class="table-label">Physician</td>
+      <td class="table-data">${caseData.details.physician}</td>
+    </tr>
+  </table>
   `
   // if showDetail === false
   : `
-  <td>No Show Detail</td>
+  </table>
   `
 
 // (caseData: casesState[n]): string
@@ -83,10 +106,7 @@ const templateCaseElement = caseData => `
           <p>${caseData.details.notes}</p>
         </td>
       </tr>
-      <tr>
         ${templateCaseElementDetail(caseData)}
-      </tr>
-    </table>
   </div>
 `.trim();
 

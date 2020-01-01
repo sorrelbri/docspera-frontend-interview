@@ -60,3 +60,9 @@ div.case td.table-data {
 div.case table p {
   margin: 0;
 }
+
+div.case tr.table-detail {
+  font-size: 80%;
+  padding-left: 5%;
+  margin: 5px 0;
+}
